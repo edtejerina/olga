@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+@font-face {
+    font-family: 'College';
+    src: url('../fonts/CollegeBold.woff2') format('woff2'),
+        url('../fonts/CollegeBold.woff2') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --color-college-blue: #006AA8;
+    --color-vibing-red: #FF2E2E;
+    --color-not-white: #E5E5E5;
+    --color-black: #1B1B1B;
+    --color-vibrant-blue: #0D2D84;
+    --color-cream-white: #F5F0E3;
+}
+
+
+   .swiper {
+      width: 100%;
+      overflow: hidden;
+    }
+        .swiper-wrapper {
+            transition: transform .2s linear;
+            width: fit-content;
+            margin: 0 auto;
+            .swiper-slide {
+                width:  200px;
+                height: 200px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 12px
+                }
+            }
+        }
+
+body {
+    @apply bg-cream-white;
+}
+
+
+h2 {
+    font-family: 'college', sans-serif;
+    font-weight: bold;
+    @apply text-5xl uppercase;
+}
+
+p, label {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.text-collegue {
+    font-family: 'College', sans-serif;
+    font-weight: bold;
+}
+@layer components {
+    .title {
+        font-family: 'College', sans-serif;
+        font-weight: bold;
+        @apply text-white;
+    }
+    .cta-button {
+        @apply bg-vibing-red text-xl text-white rounded-md px-5 py-2.5;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: bold;
+    }
+    .hero {
+        background-image: url(../assets/images/hero-background.png);
+        @apply relative overflow-hidden bg-cover bg-center flex flex-col items-center justify-center rounded-xl min-h-[494px];
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #0D2D84;
+            opacity: 0.6;
+        }
+    }
+
+    .marquee {
+        @apply relative bg-vibing-red py-5 w-full overflow-hidden whitespace-nowrap h-15;
+    }
+
+    .marquee-content {
+
+    }
+
+    .content-unit {
+        @apply py-9 bg-college-blue;
+    }
+
+    .benefits {
+        @apply bg-vibrant-blue;
+    }
+}
+
+
+.track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    @apply grid grid-cols-4 md:grid-cols-12 gap-5;
+}
+
+
+.accordion-item {
+    @apply border-2 border-black rounded-md mb-10;
+}
+
+.accordion-header {
+    @apply cursor-pointer p-2.5 bg-white text-black text-xl font-bold;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 10px;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 200px;
+    padding: 10px;
+}

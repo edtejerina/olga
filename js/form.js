@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 const form = document.querySelector('form');
 const nombreInput = document.getElementById('nombre');
-const apellidoInput = document.getElementById('apellido');
+const emailInput = document.getElementById('email');
 const edadInput = document.getElementById('edad');
 const redesInput = document.getElementById('redes');
 const motivoInput = document.getElementById('motivo');
@@ -12,7 +12,7 @@ form.addEventListener('submit', function (e) {
     // Validaciones básicas
     if (
     !nombreInput.value.trim() ||
-    !apellidoInput.value.trim() ||
+    !emailInput.value.trim() ||
     !edadInput.value.trim() ||
     !redesInput.value.trim() ||
     !motivoInput.value.trim()
@@ -22,10 +22,9 @@ form.addEventListener('submit', function (e) {
     }
 
     // Mostrar mensaje de agradecimiento
-    const nombreCompleto = `${nombreInput.value.trim()} ${apellidoInput.value.trim()}`;
     form.innerHTML = `
     <div class="text-center text-white text-xl font-semibold">
-        ¡Gracias, ${nombreCompleto}, por anotarte al OLGA Day! 🥳
+        ¡Gracias, ${nombreInput.value}, por anotarte al OLGA Day! 🥳
     </div>
     `;
 });
